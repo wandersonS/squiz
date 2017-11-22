@@ -1,0 +1,135 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="w3.css">
+		<title>SQuiz</title>
+	</head>
+
+	<body>
+
+		<header class="w3-container w3-purple w3-xlarge w3-margin-bottom w3-card-2 w3-row">
+			<div class="w3-col s4 m4 l3">
+				<img src="img/becker.svg" width="100px" height="100px" ></img>
+			</div>
+			<div class="w3-col s8 m4 l3">
+				<h1>SQuiz</h1>
+			</div>
+		</header>
+
+		<article class="w3-row w3-margin">
+
+			<div id="login" class=" w3-white w3-section w3-card-2 w3-col s12 m12 l5 ">
+
+				<header class="w3-center">
+					<div class="w3-container w3-purple">
+						<h1> Login </h1>
+					</div>
+					<img src="img/usuario.png" style="width:200px"><br><br>
+				</header>
+
+				<article class="w3-container">
+
+					<form name="FLogin" method="POST" action="login.php">
+						<input type="email" id="email" name="LEmail" class="w3-input w3-border" placeholder="Email" required/>
+						<div class="w3-row  w3-border">
+							<div class="w3-col w3-right" style="width:56px">
+								<button type="button" class="w3-button" onclick="exibir(1)" >
+									<i class="fa fa-eye" id="ico" style="font-size:24px;color:gray"></i>
+								</button>
+							</div>
+							<div class="w3-rest">
+								<input type="password" id="senha" name="LSenha" class="w3-input w3-border-0" placeholder="Senha" required/>
+							</div>
+						</div>
+						<br>
+						<input type="submit" value="Logar ❯" class="w3-btn w3-purple">
+					</form>
+
+				</article>
+
+			</div>
+
+			<div class="w3-col s12 m12 l1">
+				<br>
+			</div>
+
+			<div id="cadastro" class="w3-white w3-card-2 w3-section w3-col s12 m12 l5 ">
+				<header class="w3-container w3-red w3-center ">
+					<h1> Cadastro </h1>
+				</header>
+				<article class="w3-margin ">
+					<form name="FRegistrar" class="w3-text-red" method="POST" action="registrar.php">
+						<div class="container">
+							<div class="w3-half">
+								<label>Nome</label>
+								<input type="text" id="nome" name="Nome" class="w3-input w3-border" required/>
+							</div>
+							<div class="w3-half">
+								<label>Sobrenome</label>
+								<input type="text" id="sobrenome" name="Sobrenome" class="w3-input w3-border" required/>
+							</div>
+						</div>
+						<label>Data Nascimento</label>
+						<input type="date" id="email" name="DataNascimento" class="w3-input w3-border" required/><br>
+						<label>Sexo</label>
+						<div class="w3-border">
+							<div class="w3-margin">
+								<input type="radio" name="Sexo" value="M" checked> Masculino<br>
+								<input type="radio" name="Sexo" value="F"> Feminino<br>
+								<input type="radio" name="Sexo" value="O"> Outros<br>
+							</div>
+						</div>
+						<label>Email</label>
+						<input type="email" id="email" name="Email" class="w3-input w3-border" required/>
+						<label>Senha</label>
+						<div class="w3-row  w3-border">
+							<div class="w3-col w3-right" style="width:56px">
+								<button type="button" class="w3-button" onclick="exibir(2)" >
+									<i class="fa fa-eye" id="ico2" style="font-size:24px;color:gray" ></i>
+								</button>
+							</div>
+							<div class="w3-rest">
+								<input type="password" id="senha" name="Senha" id="Senha" class=" w3-input w3-border-0" required/>
+							</div>
+						</div><br>
+						<input type="submit" value="Registrar ❯" class="w3-btn w3-red"/>
+					</form>
+				</article>
+			</div>
+
+		</article><br>
+
+		<script>
+			function exibir(i){
+				this.i = i;
+				if(this.i == 1){
+					var ico = document.getElementById('ico');
+					var x = document.forms["FLogin"]["LSenha"];
+				}
+				else{
+					var ico = document.getElementById('ico2');
+					var x = document.forms["FRegistrar"]["Senha"];
+				}
+
+				if(x.type === "password"){
+					x.type = "text";
+					ico.setAttribute("class","fa fa-eye-slash");
+				}
+				else{
+					x.type="password";
+					ico.setAttribute("class","fa fa-eye");
+				}
+		}
+		</script>
+
+		<footer class="w3-container w3-purple  w3-card-3 w3-margin-top w3-center">
+			<h5>Desenvolvido por Wanderson da Silva<br>
+			SQuiz - InforWorld Sistemas.</h5>
+		</footer>
+
+	</body>
+
+</html>
