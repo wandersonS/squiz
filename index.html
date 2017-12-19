@@ -92,8 +92,11 @@
 								</button>
 							</div>
 							<div class="w3-rest">
-								<input type="password" id="senha" name="Senha" id="Senha" class=" w3-input w3-border-0" required/>
+								<input type="password" id="senha" name="Senha" id="Senha" onfocusout="seguranca.alerta()" class=" w3-input w3-border-0" required/>
 							</div>
+						</div>
+						<div class="w3-panel w3-pale-red">
+								<label id="minimo" class="w3-hide"> Mínimo 8 caracteres. </label>
 						</div><br>
 						<input type="submit" value="Registrar ❯" class="w3-btn w3-red"/>
 					</form>
@@ -123,6 +126,19 @@
 					ico.setAttribute("class","fa fa-eye");
 				}
 		}
+
+		var seguranca = {
+			senha:document.forms['FRegistrar']['Senha'],
+			texto:document.getElementById('minimo'),
+			alerta: function(){
+				console.log();
+				if(this.senha.value.length < 8){
+					this.texto.setAttribute("Class","w3-show")
+				}
+
+			}
+		};
+
 		</script>
 
 		<footer class="w3-container w3-purple  w3-card-3 w3-margin-top w3-center">
