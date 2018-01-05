@@ -5,35 +5,51 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style>
+			.circulo{
+				height: 20px;
+				width:20px;
+				background-color: #bbb;
+				border-radius: 50%;
+				display: inline-block;
+			}
+		</style>
 		<title>SQuiz</title>
 	</head>
 
 	<body>
-
+		<!-- CABEÇALHO -->
 		<header class="w3-container w3-purple w3-xlarge w3-margin-bottom w3-card-2 w3-row">
 			<div class="w3-col s4 m4 l3">
-				<img src="img/becker.svg" width="100px" height="100px" ></img>
+				<!--<img src="img/becker.svg" width="100px" height="100px" ></img>-->
 			</div>
 			<div class="w3-col s8 m4 l3">
 				<h1>SQuiz</h1>
 			</div>
 		</header>
-
-		<article class="w3-row w3-margin">
-
-			<div id="login" class=" w3-white w3-section w3-card-2 w3-col s12 m12 l5 ">
-
+		<!-- LISTA DE MENU -->
+		<div class="w3-bar w3-purple w3-card">
+			<a href="#" class="w3-bar-item w3-button" onclick="$('#login').show();">Login</a>
+			<a href="#" class="w3-bar-item w3-button" onclick="$('#cadastro').show();">Cadastro</a>
+		</div>
+		<!-- MODAL LOGIN -->
+		<div id="login" class="w3-container w3-modal">
+  		<span onclick="$('#login').hide();" class="w3-xlarge w3-text-white w3-display-topright" title="Close Modal">&times;</span>
+			<!-- INICIO DO FORMULARIO LOGIN -->
+			<form name="FLogin" method="POST" action="login.php">
+			<div  class=" w3-white w3-section w3-card-2 w3-col s12 m12 l5 w3-display-middle">
+				<!-- MODAL LOGIN CABEÇALHO -->
 				<header class="w3-center">
 					<div class="w3-container w3-purple">
-						<h1> Login </h1>
+							<h1> Login </h1>
 					</div>
 					<img src="img/usuario.png" style="width:200px"><br><br>
 				</header>
 
+				<!-- MODAL LOGIN CORPO -->
 				<article class="w3-container">
-
-					<form name="FLogin" method="POST" action="login.php">
-						<input type="email" id="email" name="LEmail" class="w3-input w3-border" placeholder="Email" required/>
+						<input type="email" id="lemail" name="LEmail" class="w3-input w3-border" placeholder="Email" required/>
 						<div class="w3-row  w3-border">
 							<div class="w3-col w3-right" style="width:56px">
 								<button type="button" class="w3-button" onclick="exibir(1)" >
@@ -41,71 +57,229 @@
 								</button>
 							</div>
 							<div class="w3-rest">
-								<input type="password" id="senha" name="LSenha" class="w3-input w3-border-0" placeholder="Senha" required/>
+								<input type="password" id="lsenha" name="LSenha" class="w3-input w3-border-0" placeholder="Senha" required/>
 							</div>
 						</div>
 						<br>
-						<input type="submit" value="Logar ❯" class="w3-btn w3-purple">
-					</form>
+
 
 				</article>
-
+				<!-- MODAL LOGIN RODAPÉ -->
+				<footer class="w3-purple">
+					<!--<button class="w3-btn w3-block w3-right-align" onclick="$('#login').hide()"> Fechar &times; </button>-->
+					<input type="submit" value="Logar ❯" class="w3-btn w3-block w3-purple w3-right-align">
+				</footer>
+				</form>
 			</div>
+		</div>
 
-			<div class="w3-col s12 m12 l1">
-				<br>
-			</div>
-
-			<div id="cadastro" class="w3-white w3-card-2 w3-section w3-col s12 m12 l5 ">
-				<header class="w3-container w3-red w3-center ">
+		<!-- MODAL CADASTRO -->
+		<div id="cadastro" class="w3-container w3-modal">
+			<span onclick="$('#cadastro').hide();" class="w3-xlarge w3-text-white w3-display-topright">&times;</span>
+			<!--INICIO DO FORMULARIO -->
+			<form name="FRegistrar" method="POST" style="#671140" action="registrar.php">
+			<div  class="w3-white w3-card-2 w3-section w3-col s12 m12 l5 w3-display-middle">
+				<!-- CADASTRO CABEÇALHO-->
+				<header class="w3-container w3-center " style="background-color:#671140;color:#fff">
 					<h1> Cadastro </h1>
 				</header>
-				<article class="w3-margin ">
-					<form name="FRegistrar" class="w3-text-red" method="POST" action="registrar.php">
-						<div class="container">
-							<div class="w3-half">
-								<label>Nome</label>
-								<input type="text" id="nome" name="Nome" class="w3-input w3-border" required/>
-							</div>
-							<div class="w3-half">
-								<label>Sobrenome</label>
-								<input type="text" id="sobrenome" name="Sobrenome" class="w3-input w3-border" required/>
-							</div>
+
+				<!-- CADASTRO CORPO 1-->
+				<div class="w3-margin " id="corpo1">
+					<label>Nome</label>
+					<input type="text" id="nome" name="Nome" class="w3-input w3-border" required/>
+					<label>Sobrenome</label>
+					<input type="text" id="sobrenome" name="Sobrenome" class="w3-input w3-border" required/>
+					<br>
+				</div>
+				<!-- CADASTRO CORPO 2-->
+				<div class="w3-margin" id="corpo2">
+					<label>Data Nascimento</label>
+					<input type="date" id="cnascimento" name="DataNascimento" class="w3-input w3-border" required/>
+					<label>Sexo</label>
+					<div class="w3-border">
+						<div class="w3-margin">
+							<input type="radio" name="Sexo" value="M" checked> Masculino<br>
+							<input type="radio" name="Sexo" value="F"> Feminino<br>
+							<input type="radio" name="Sexo" value="O"> Outros<br>
 						</div>
-						<label>Data Nascimento</label>
-						<input type="date" id="email" name="DataNascimento" class="w3-input w3-border" required/><br>
-						<label>Sexo</label>
-						<div class="w3-border">
-							<div class="w3-margin">
-								<input type="radio" name="Sexo" value="M" checked> Masculino<br>
-								<input type="radio" name="Sexo" value="F"> Feminino<br>
-								<input type="radio" name="Sexo" value="O"> Outros<br>
-							</div>
+					</div>
+				</div>
+				<!-- CADASTRO CORPO 3 -->
+				<div class="w3-margin" id="corpo3">
+					<label>Email</label>
+					<input type="email" id="cemail" name="Email" class="w3-input w3-border" required/>
+					<label>Senha</label><br>
+					<div class="w3-row  w3-border">
+						<div class="w3-col w3-right" style="width:56px">
+							<button type="button" class="w3-button" onclick="exibir(2)" >
+								<i class="fa fa-eye" id="ico2" style="font-size:24px;color:gray" ></i>
+							</button>
 						</div>
-						<label>Email</label>
-						<input type="email" id="email" name="Email" class="w3-input w3-border" required/>
-						<label>Senha</label>
-						<div class="w3-row  w3-border">
-							<div class="w3-col w3-right" style="width:56px">
-								<button type="button" class="w3-button" onclick="exibir(2)" >
-									<i class="fa fa-eye" id="ico2" style="font-size:24px;color:gray" ></i>
+						<div class="w3-rest">
+							<input type="password" id="csenha" name="Senha" id="Senha" onfocusout="seguranca.alerta()" class=" w3-input w3-border-0" required/>
+						</div>
+					</div>
+					<div class="w3-panel w3-pale-red">
+							<label id="minimo" class="w3-hide"> Mínimo 8 caracteres. </label>
+					</div><br>
+				</div>
+				<!-- MODAL CADASTRO BOTÕES -->
+
+				<br>
+				<div class="w3-center">
+					<span id="c1" class="circulo"></span>
+					<span id="c2" class="circulo"></span>
+					<span id="c3" class="circulo"></span>
+				</div>
+				<br>
+				<!-- CADASTRO RODAPÉ -->
+				<footer class="w3-container" style="background-color:#671140">
+					<!--<button class="w3-btn w3-block w3-right-align" onclick="$('#cadastro').hide()"> Fechar &times; </button>-->
+					<div class="w3-bar">
+						<button class="w3-button" id="ant" onclick="cadastro(0)" style="background-color:#671140;color:#fff" >&#10094; Anterior</button>
+						<button class="w3-button w3-right" id="pro" onclick="cadastro(1)" style="background-color:#671140;color:#fff">Próximo &#10095;</button>
+					</div>
+				</footer>
+			</div>
+		</form>
+		<!-- FINAL DO FORMULARIO -->
+		</div>
+
+
+		<!-- CORPO DE TEXTO -->
+		<article class="w3-row">
+
+				<div class="w3-section w3-card-2 w3-col s12 m12 l12">
+
+					<h1> SQuiz </h1>
+					<p> Neste aplicativo você pode criar seu quiz ou simplemente jogar.</p>
+
+					<!-- INICIO DO FORMULARIO -->
+					<div class="w3-container w3-padding">
+					<form action="">
+						<div class="w3-row w3-border w3-col s12 m12 l12">
+							<div class="w3-col w3-right" style="width:56px;background-color:#90EE90">
+								<button type="button" class="w3-button" onclick="exibir(1)" >
+									<i class="fa fa-search" id="ico" style="font-size:24px;color:#fff;"></i>
 								</button>
 							</div>
 							<div class="w3-rest">
-								<input type="password" id="senha" name="Senha" id="Senha" onfocusout="seguranca.alerta()" class=" w3-input w3-border-0" required/>
+								<input type="text" class="w3-input w3-border-0" placeholder="Search" required/>
 							</div>
 						</div>
-						<div class="w3-panel w3-pale-red">
-								<label id="minimo" class="w3-hide"> Mínimo 8 caracteres. </label>
-						</div><br>
-						<input type="submit" value="Registrar ❯" class="w3-btn w3-red"/>
 					</form>
-				</article>
-			</div>
+				</div><br><br><br>
+					<!-- FIM DO FORMULARIO -->
+				<div class="w3-gray w3-container">
+					<div class="w3-row-padding w3-margin-top">
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_5terre.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 1</h5>
+					      </div>
+					    </div>
+					  </div>
+
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_monterosso.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 2</h5>
+					      </div>
+					    </div>
+					  </div>
+
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_vernazza.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 3</h5>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+					<div class="w3-row-padding w3-margin-top">
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_manarola.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 4</h5>
+					      </div>
+					    </div>
+					  </div>
+
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_corniglia.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 5</h5>
+					      </div>
+					    </div>
+					  </div>
+
+					  <div class="w3-third">
+					    <div class="w3-card w3-white">
+					      <img src="img/img_riomaggiore.jpg" style="width:100%">
+					      <div class="w3-container">
+					        <h5>Quiz 6</h5>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
 
 		</article><br>
 
 		<script>
+
+			var contador = 0;
+			cadastro(0);
+			function cadastro(n){
+
+				var cores = ["#bbb","#90EE90"];
+				var tamanho = ["20px","25px"];
+
+				switch (n) {
+					case 0:
+						$("#pro").attr("onclick","cadastro(1)");
+						$("#c1").css({ "background-color":cores[1], "width":tamanho[1], "height":tamanho[1] });
+						$("#c2").css({ "background-color":cores[0], "width":tamanho[0], "height":tamanho[0] });
+						$("#c3").css({ "background-color":cores[0], "width":tamanho[0], "height":tamanho[0] });
+						$("#ant").hide();
+						$("#corpo1").show();
+						$("#corpo2").hide();
+						$("#corpo3").hide();
+					break;
+
+					case 1:
+						$("#pro").attr("onclick","cadastro(2)");
+						$("#ant").attr("onclick","cadastro(0)");
+						$("#c1").css({ "background-color":cores[1], "width":tamanho[0], "height":tamanho[0] });
+						$("#c2").css({ "background-color":cores[1], "width":tamanho[1], "height":tamanho[1] });
+						$("#c3").css({ "background-color":cores[0], "width":tamanho[0], "height":tamanho[0] });
+						$("#ant").show();
+						$("#corpo1").hide();
+						$("#corpo2").show();
+						$("#corpo3").hide();
+					break;
+
+					case 2:
+						$("#pro").attr("onclick","");
+						$("#ant").attr("onclick","cadastro(1)");
+						$("#c1").css({"background-color":cores[1], "width":tamanho[0], "height":tamanho[0]});
+						$("#c2").css({"background-color":cores[1], "width":tamanho[0], "height":tamanho[0]});
+						$("#c3").css({"background-color":cores[1], "width":tamanho[1], "height":tamanho[1]});
+						$("#ant").show();
+						$("#corpo1").hide();
+						$("#corpo2").hide();
+						$("#corpo3").show();
+					break;
+				}
+			}
+
 			function exibir(i){
 				this.i = i;
 				if(this.i == 1){
